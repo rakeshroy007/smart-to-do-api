@@ -1,0 +1,182 @@
+{
+    "info": {
+        "name": "Smart ToDo API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Postman collection for testing the Smart ToDo API endpoints"
+    },
+    "item": [
+        {
+            "name": "Register User",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"username\": \"roy_rakesh\",\n  \"email\": \"roy_rakesh@example.com\",\n  \"password\": \"Password123\"\n}",
+                    "options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+                },
+                "url": {
+                    "raw": "http://localhost:5000/auth/signup",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "auth",
+                        "signup"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Login User",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"roy_rakesh@example.com\",\n  \"password\": \"Password123\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/auth/login",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "auth",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create Task",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"First Task\",\n  \"description\": \"This is a First task description\",\n  \"priority\": \"high\"\r\n",
+                    "options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+                },
+                "url": {
+                    "raw": "http://localhost:5000/tasks",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "tasks"
+                    ]
+                }
+            }, 
+            "response": []
+        },
+        {
+            "name": "Get All Tasks",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:5000/tasks",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "tasks"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update Task",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"title\": \"Updated Task Title\",\n  \"description\": \"Updated description\",\n  \"status\": \"completed\",\n }",
+                    "options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+                },
+                "url": {
+                    "raw": "http://localhost:5000/tasks/:taskId",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "tasks",
+                        ":taskId"
+                    ],
+                    "variable": [
+                        {
+                            "key": "taskId",
+                            "value": "replace_with_task_id"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Task",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:5000/tasks/:taskId",
+                    "host": [
+                        "localhost"
+                    ],
+                    "path": [
+                        "tasks",
+                        ":taskId"
+                    ],
+                    "variable": [
+                        {
+                            "key": "taskId",
+                            "value": "replace_with_task_id"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
